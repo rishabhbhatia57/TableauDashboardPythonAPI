@@ -22,7 +22,8 @@ def index():
 
 @app.route('/GetJWT')
 def GetJWT():
-    ct = datetime.now()
+    # ct = datetime.now()
+    ct = datetime.now() - timedelta(minutes=5,seconds=40)
     # utc_offset = datetime.timedelta(hours=5, minutes=30)
     # print(utc_offset)
     ts = int(ct.timestamp())
@@ -53,7 +54,7 @@ def GetJWT():
     return jsonify(
         token = token,
         issuedAt = ct,
-        expireAt = datetime.fromtimestamp(ts + 300)
+        expireAt = datetime.fromtimestamp(ts + 600)
         )
 
 if __name__ == "__main__":
