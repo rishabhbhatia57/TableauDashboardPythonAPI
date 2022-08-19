@@ -9,6 +9,7 @@ import calendar
 from flask import jsonify
 # from connectedApps import signIntoConnectedApps, getConnectAppsList
 import json
+from datetime import datetime, timedelta
 app = Flask(__name__)
 cors = CORS(app)
 
@@ -21,8 +22,11 @@ def index():
 
 @app.route('/GetJWT')
 def GetJWT():
-    ct = datetime.now()
+    ct = datetime.utcnow() + timedelta(hours=5, minutes=30)
+    # utc_offset = datetime.timedelta(hours=5, minutes=30)
+    # print(utc_offset)
     ts = int(ct.timestamp())
+
     payload = {
     'jti' : str(uuid.uuid4()),
     'iss' : '6e57a52c-6629-4fea-a583-1c6a57983381', # connectedappclientid
