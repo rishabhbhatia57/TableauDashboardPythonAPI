@@ -12,12 +12,7 @@ import json
 app = Flask(__name__)
 cors = CORS(app)
 
-ct = datetime.now()
 
-
-ct = datetime.now()
-
-ts = int(ct.timestamp())
 
 @app.route('/')
 def index():
@@ -26,7 +21,8 @@ def index():
 
 @app.route('/GetJWT')
 def GetJWT():
-    print(ct)
+    ct = datetime.now()
+    ts = int(ct.timestamp())
     payload = {
     'jti' : str(uuid.uuid4()),
     'iss' : '6e57a52c-6629-4fea-a583-1c6a57983381', # connectedappclientid
