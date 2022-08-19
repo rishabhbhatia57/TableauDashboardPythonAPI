@@ -27,7 +27,7 @@ def GetJWT():
     'jti' : str(uuid.uuid4()),
     'iss' : '6e57a52c-6629-4fea-a583-1c6a57983381', # connectedappclientid
     'aud' : 'tableau',
-    'sub' : 'Prakash.Khaire', #username
+    'sub' : 'Tableauadmin', #username
     'scope' : ['tableau:views:embed'], #scope
     "iat": ts,
     'exp' : ts + 300,
