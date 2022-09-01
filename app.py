@@ -24,7 +24,7 @@ def index():
 def GetJWT():
     ct = datetime.now()
     pispl_server_time = datetime.now() + timedelta(hours=5, minutes=30) # IST Zone
-    ts = int(ct.timestamp())
+    ts = int(pispl_server_time.timestamp())
     # ts = int(pispl_server_time.timestamp())
 
     payload = {
@@ -34,7 +34,7 @@ def GetJWT():
     'sub' : 'Tableauadmin', #username
     'scope' : ['tableau:views:embed'], #scope
     "iat": ts,
-    'exp' : ts + 600,
+    'exp' : ts + 300,
     }
 
     signing_key = 'AcjrEt0ciZsrDLvs0GADhwgcYc8WM4RvJjaP2STqqlQ=' #connectedappsecrectvalue
