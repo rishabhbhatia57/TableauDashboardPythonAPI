@@ -24,7 +24,8 @@ def index():
 def GetJWT():
     ct = datetime.now()
     pispl_server_time = datetime.now() + timedelta(hours=5, minutes=30) # IST Zone
-    ts = int(pispl_server_time.timestamp())
+    ts = int(ct.timestamp())
+    # ts = int(pispl_server_time.timestamp())
 
     payload = {
     'jti' : str(uuid.uuid4()),
@@ -33,7 +34,7 @@ def GetJWT():
     'sub' : 'Tableauadmin', #username
     'scope' : ['tableau:views:embed'], #scope
     "iat": ts,
-    'exp' : ts + 400,
+    'exp' : ts + 600,
     }
 
     signing_key = 'AcjrEt0ciZsrDLvs0GADhwgcYc8WM4RvJjaP2STqqlQ=' #connectedappsecrectvalue
@@ -51,8 +52,8 @@ def GetJWT():
     # token = token.decode("utf-8")
     return jsonify(
         token = token,
-        issuedAt = ct,
-        expireAt = datetime.fromtimestamp(ts + 400)
+        issuedAt = datetime.fromtimestamp(ts),
+        expireAt = datetime.fromtimestamp(ts + 600)
         )
 
 if __name__ == "__main__":
