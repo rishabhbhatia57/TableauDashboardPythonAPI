@@ -23,8 +23,8 @@ def index():
 @app.route('/GetJWT')
 def GetJWT():
     ct = datetime.now()
-    pispl_server_time = datetime.now() + timedelta(hours=5, minutes=30) # IST Zone
-    ts = int(pispl_server_time.timestamp())
+    # pispl_server_time = datetime.now() + timedelta(hours=5, minutes=30) # IST Zone
+    ts = int(ct.timestamp())
     # ts = int(pispl_server_time.timestamp())
 
     payload = {
