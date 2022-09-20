@@ -29,7 +29,7 @@ def GetJWT():
 
     payload = {
     'jti' : str(uuid.uuid4()),
-    'iss' : '6e57a52c-6629-4fea-a583-1c6a57983381', # connectedappclientid
+    'iss' : 'bc094315-8675-4f6f-b248-4b2317c13f7e', # connectedappclientid
     'aud' : 'tableau',
     'sub' : 'Tableauadmin', #username
     'scope' : ['tableau:views:embed'], #scope
@@ -37,14 +37,14 @@ def GetJWT():
     'exp' : ts + 300,
     }
 
-    signing_key = 'AcjrEt0ciZsrDLvs0GADhwgcYc8WM4RvJjaP2STqqlQ=' #connectedappsecrectvalue
+    signing_key = 'uyznDagevLCgdLGHPva/wySbcknfov4SlEQCvrsN354=' #connectedappsecrectvalue
 
     algorithm = 'HS256'
     # expiresIn =  datetime.datetime.utcnow() + datetime.timedelta(minutes=5)
 
     headers = {
-        'kid' : '38bf74c3-344f-47a5-9f5e-1d06a2f9322c', #connectedappsecretid 
-        'iss' : '6e57a52c-6629-4fea-a583-1c6a57983381', #connectedappclientid
+        'kid' : 'caca30bf-b586-4176-8312-932a33f98a32', #connectedappsecretid
+        'iss' : 'bc094315-8675-4f6f-b248-4b2317c13f7e', #connectedappclientid
     }
 
     # token = jwt.encode(payload, signing_key, algorithm, headers)
@@ -53,7 +53,7 @@ def GetJWT():
     return jsonify(
         token = token,
         issuedAt = datetime.fromtimestamp(ts),
-        expireAt = datetime.fromtimestamp(ts + 600)
+        expireAt = datetime.fromtimestamp(ts + 300)
         )
 
 if __name__ == "__main__":
